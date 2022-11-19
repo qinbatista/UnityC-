@@ -1,4 +1,4 @@
-# C# version 1.0
+# CSharp version 1.0
 ## Class
 * Allocate memory for this class, the class contains different data structures, and it can be inherited or inherent.
 * Give class to another parameter equal **reference**
