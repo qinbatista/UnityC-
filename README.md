@@ -5,7 +5,7 @@
 
 >### Singleton
 
-```
+``` CSharp
 
 using UnityEngine;
 public abstract class Singleton<T> : Singleton where T : Singleton<T>
