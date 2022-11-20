@@ -288,14 +288,21 @@ public class LambdaExpression : MonoBehaviour
 ```
 
 # C# version 4.0
-## Named arguments
- * specific which arguments have which value
- * any order of arguments you want to give for functions
+## Dynamic binding
+* easier modify the string
 
- ```CSharp
+```CSharp
+Debug.Log("a"+"b");
+
+```
+## Named arguments
+* specific which arguments have which value
+* any order of arguments you want to give for functions
+
+```CSharp
 PrintOrderDetails(orderNum: 31, productName: "Red Mug", sellerName: "Gift Shop");
 PrintOrderDetails(productName: "Red Mug", sellerName: "Gift Shop", orderNum: 31);
- ```
+```
  
 # C# version 5.0
 ## Asynchronous programming
