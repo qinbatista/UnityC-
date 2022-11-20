@@ -1,3 +1,6 @@
+# Before Reading
+> ### All of the features are common and useful in C# Unity, It is personally summarized by Qin, full documentation please check: [C# Offical](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history)
+
 # C# version 1.0
 ## Class
 * Allocate memory for this class, the class contains different data structures, and it can be inherited or inherent.
@@ -234,3 +237,52 @@ public class Delegate : MonoBehaviour
 ```
 
 # C# version 3.0
+## Property
+* Safer, you only can access by the `get` or `set` of the property
+* You can initial property when starting
+
+```CSharp
+using UnityEngine;
+public class PropertyTest : MonoBehaviour
+{
+    public string CommonProperty { get; set; }
+    public string InitialedProperty { get; set; } = "InitialedProperty";
+    public string ReadOnlyProperty { get; } = "ReadOnlyProperty";
+    void Start()
+    {
+        CommonProperty = "John";
+        Debug.Log("[PropertyTest]CommonProperty:"+CommonProperty);
+        Debug.Log("[PropertyTest]InitialedProperty:"+InitialedProperty);
+        Debug.Log("[PropertyTest]ReadOnlyProperty:"+ReadOnlyProperty);
+    }
+}
+
+```
+## Lambda Expressions
+* Shorter codes expression
+
+```CSharp
+using System;
+using UnityEngine;
+public class LambdaExpression : MonoBehaviour
+{
+    // Start is called before the first frame update
+    int intLambda => 1+2;
+    int intLambdaFunction ()=> function();
+    Func<int> functionLambda ()=> function;
+    void Start()
+    {
+        Debug.Log("[LambdaExpression]intLambda:"+intLambda);
+        Debug.Log("[LambdaExpression]intLambdaFunction:"+intLambdaFunction());
+        Debug.Log("[LambdaExpression]functionLambda:"+functionLambdaExe());
+    }
+
+    int function()=>5;
+    int functionLambdaExe()
+    {
+        Debug.Log("[LambdaExpression]functionLambdaExe:"+functionLambda());
+        return 0;
+    }
+}
+
+```
