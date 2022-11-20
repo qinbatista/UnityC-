@@ -9,7 +9,9 @@ public class Event : MonoBehaviour
     public static event Action<string> unityEvent;
     void Start()
     {
-        myEvent("unityEvent");
-        unityEvent("unityEvent");
+        myEvent("s_myEvent");
+        myEvent?.Invoke("s_myEvent");
+        unityEvent("s_unityEvent");
+        unityEvent?.Invoke("s_unityEvent");
     }
 }
