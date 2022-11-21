@@ -377,3 +377,54 @@ public class Asynchronous : MonoBehaviour
 }
 
 ```
+# C# version 6.0
+## Lambda operator
+* shorter codes
+
+```CSharp
+public void Display()
+{
+	Debug.Log("Display");
+}
+
+public void Display()=>Debnug.Log("Display");
+
+```
+## Null propagator
+* shorter codes
+* indexer
+
+```CSharp
+List<int> myList = new List<int>();
+
+Action?.Invoke();
+```
+# C# version 7.0
+## Ref
+* easier to write codes
+```CSharp
+public ref Function()
+{
+	ref a = 11;
+	return a;
+}
+```
+# C# version 8.0
+## readonly
+* faster access
+* clear codes expression
+
+```CSharp
+private int counter;
+public int Counter
+{
+    readonly get => counter;
+    set => counter = value;
+}
+```
+## Generic type constraint
+* indicate which type of Generic
+
+```CSharp
+public class AGenericClass<T> where T : IComparable<T> { }
+```
