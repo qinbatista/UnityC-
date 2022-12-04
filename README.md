@@ -428,3 +428,50 @@ public int Counter
 ```CSharp
 public class AGenericClass<T> where T : IComparable<T> { }
 ```
+# Unity C#
+## Job Example
+### Define a Job
+```CSharp
+[BurstCompile]
+public struct BGFrontJob : IJobParallelForTransform
+{
+    [ReadOnly] public Vector3 _playerPositionJob;
+    public NativeArray<bool> _isActiveNativeArrayJob;
+    public void Execute(int index, TransformAccess transform)
+    {
+        if (Mathf.Abs(_playerPositionJob.x - transform.position.x) > 10f) _isActiveNativeArrayJob[index] = false;
+        else _isActiveNativeArrayJob[index] = true;
+        if (Mathf.Abs(_playerPositionJob.x - transform.position.x) >= 30 && Mathf.Abs(_playerPositionJob.x - transform.position.x) < 35)
+        {
+            if (_playerPositionJob.x > transform.position.x)
+            {
+                transform.position = new Vector3(transform.position.x + 55, 0, 0);
+                Debug.Log($"left move to right = {transform.position}");
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x - 55, 0, 0);
+                Debug.Log($"right move to left = {transform.position}");
+            }
+        }
+    }
+}
+
+```
+### Use Jobs
+```CSharp
+void Update()
+{
+    _bgFrontJob = new BGFrontJob
+    {
+        _playerPositionJob = _player.position,
+        _isActiveNativeArrayJob = _isActiveNativeArray,
+    };
+    _jobHandle = _bgFrontJob.Schedule(_transformAccessArray);
+    _jobHandle.Complete();
+    for (int i = 0; i < _frondGroundsCount; i++)
+    {
+        _frondGroundsList[i].SetActive(_isActiveNativeArray[i]);
+    }
+}
+```
