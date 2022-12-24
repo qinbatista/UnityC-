@@ -475,3 +475,30 @@ void Update()
     }
 }
 ```
+
+## Multiple Thread Example
+### Thread
+```CSharp
+thread = new Thread(() =>
+{
+    while (true)
+    {
+        this.TryGetComponent(out MeshRenderer meshRenderer);
+        Debug.Log("Running on a new thread");
+    }
+});
+thread.Start();
+
+```
+### Parallel
+```CSharp
+Parallel.Invoke(() =>
+{
+    // Task 1
+    Debug.Log("Task 1 running on a new thread");
+}, () =>
+{
+    // Task 2
+    Debug.Log("Task 2 running on a new thread");
+});
+```
