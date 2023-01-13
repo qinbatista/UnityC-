@@ -502,3 +502,15 @@ Parallel.Invoke(() =>
     Debug.Log("Task 2 running on a new thread");
 });
 ```
+## Using Example
+- free physical resources after the execution inside using
+
+```CSharp
+public void DoSomething()
+{
+    using (Books myBook = new Books("book name", 12.45))
+    {
+        myBook.Print();
+    }
+}
+```
